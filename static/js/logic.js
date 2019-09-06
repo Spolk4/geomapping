@@ -43,9 +43,8 @@ L.control.layers(baseMaps, overlayMaps, {
 }).addTo(map);
 
 //color scale based on earthquake magnitude
-//http://www.perbang.dk/rgbgradient/
-//https://stackoverflow.com/questions/22040118/switch-statement-with-range-value
-//https://gis.stackexchange.com/questions/260852/switch-icons-on-geojson-file-in-leaflet
+//http://colorbrewer2.org/
+
 var circleColor = function getColor(mag) {
   switch(true) {
       case(mag>0 && mag<=1): return "#7cf92f";
@@ -80,36 +79,35 @@ function createMap(data) {
             return new L.circleMarker(latlng, {
                 radius: feature.properties.mag*5,
                 fillColor: circleColor(feature.properties.mag),
-                fillOpacity: 0.8,
+                fillOpacity: 0.7,
                 color: "black",
                 weight: .5
             })
         }
     }).addTo(earthquakeLayer);
 
-    //setting up legend
-    //day2 activity 4
-    var legend = L.control({position: "bottomright"});
-    legend.onAdd = function() {
-        var div = L.DomUtil.create("div", "legend");
-        var magnitudes = [1,2,3,4,5,5.1];
-        var colors = magnitudes.map(d=>circleColor(d));
-        labels=[];
+//     //setting up legend
+//     var legend = L.control({position: "bottomright"});
+//     legend.onAdd = function() {
+//         var div = L.DomUtil.create("div", "legend");
+//         var magnitudes = [1,2,3,4,5,5.1];
+//         var colors = magnitudes.map(d=>circleColor(d));
+//         labels=[];
 
-        var legendInfo = "<h3><center>Magnitude</center></h3>" +
-            "<div class=\"labels\">" +
-            "<div class=\"min\">"+"<" + magnitudes[0].toFixed(1)+ "</div>" +
-            "<div class=\"max\">"+">"+magnitudes[magnitudes.length-2].toFixed(1) +"</div>"+
-            "</div>"
+//         var legendInfo = "<h3><center>Magnitude</center></h3>" +
+//             "<div class=\"labels\">" +
+//             "<div class=\"min\">"+"<" + magnitudes[0].toFixed(1)+ "</div>" +
+//             "<div class=\"max\">"+">"+magnitudes[magnitudes.length-2].toFixed(1) +"</div>"+
+//             "</div>"
       
-        div.innerHTML = legendInfo;
-        // set up legend color bar
-        
-        magnitudes.forEach(function(limit, index) {
-            labels.push("<li style=\"background-color: " + colors[index] + "\"></li>"); 
-        })
-        div.innerHTML += "<ul>"+ labels.join("") + "</ul>";
-        return div;
-    };
-    legend.addTo(map);
-};
+//         div.innerHTML = legendInfo;
+
+//         // set up legend w/ color bar
+//         magnitudes.forEach(function(limit, index) {
+//             labels.push("<li style=\"background-color: " + colors[index] + "\"></li>"); 
+//         })
+//         div.innerHTML += "<ul>"+ labels.join("") + "</ul>";
+//         return div;
+//     };
+//     legend.addTo(map);
+// };
