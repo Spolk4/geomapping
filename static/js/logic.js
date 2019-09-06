@@ -110,4 +110,4 @@ function createMap(data) {
 //         return div;
 //     };
 //     legend.addTo(map);
-// };
+ };
