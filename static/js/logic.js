@@ -42,7 +42,7 @@ L.control.layers(baseMaps, overlayMaps, {
     collapsed: false
 }).addTo(map);
 
-//color scale based on earthquake magnitude
+//color scale based on earthquake magnitude data
 //http://colorbrewer2.org/
 
 var circleColor = function getColor(mag) {
