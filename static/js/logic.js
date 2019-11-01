@@ -86,28 +86,28 @@ function createMap(data) {
         }
     }).addTo(earthquakeLayer);
 
-//     //setting up legend
-//     var legend = L.control({position: "bottomright"});
-//     legend.onAdd = function() {
-//         var div = L.DomUtil.create("div", "legend");
-//         var magnitudes = [1,2,3,4,5,5.1];
-//         var colors = magnitudes.map(d=>circleColor(d));
-//         labels=[];
+    //setting up legend
+    var legend = L.control({position: "bottomright"});
+    legend.onAdd = function() {
+        var div = L.DomUtil.create("div", "legend");
+        var magnitudes = [1,2,3,4,5,5.1];
+        var colors = magnitudes.map(d=>circleColor(d));
+        labels=[];
 
-//         var legendInfo = "<h3><center>Magnitude</center></h3>" +
-//             "<div class=\"labels\">" +
-//             "<div class=\"min\">"+"<" + magnitudes[0].toFixed(1)+ "</div>" +
-//             "<div class=\"max\">"+">"+magnitudes[magnitudes.length-2].toFixed(1) +"</div>"+
-//             "</div>"
+        var legendInfo = "<h3><center>Magnitude</center></h3>" +
+            "<div class=\"labels\">" +
+            "<div class=\"min\">"+"<" + magnitudes[0].toFixed(1)+ "</div>" +
+            "<div class=\"max\">"+">"+magnitudes[magnitudes.length-2].toFixed(1) +"</div>"+
+            "</div>"
       
-//         div.innerHTML = legendInfo;
+        div.innerHTML = legendInfo;
 
-//         // set up legend w/ color bar
-//         magnitudes.forEach(function(limit, index) {
-//             labels.push("<li style=\"background-color: " + colors[index] + "\"></li>"); 
-//         })
-//         div.innerHTML += "<ul>"+ labels.join("") + "</ul>";
-//         return div;
-//     };
-//     legend.addTo(map);
+        // set up legend w/ color bar
+        magnitudes.forEach(function(limit, index) {
+            labels.push("<li style=\"background-color: " + colors[index] + "\"></li>"); 
+        })
+        div.innerHTML += "<ul>"+ labels.join("") + "</ul>";
+        return div;
+    };
+    legend.addTo(map);
  };
